@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>METAFORA Creative Studio — Konsultasi Event & Desain Visual Online</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'DM Sans', sans-serif; background: #0D0D0D; color: #F0EDE6; overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.5rem 4rem; background: rgba(13,13,13,0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(240,237,230,0.08); }
+  .logo { font-family: 'Playfair Display', serif; font-size: 1.2rem; letter-spacing: 0.15em; text-transform: uppercase; color: #F0EDE6; }
+  .logo span { color: #C9A96E; font-style: italic; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(240,237,230,0.7); font-size: 0.85rem; text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase; transition: color 0.3s; }
+  .nav-links a:hover { color: #C9A96E; }
+  .nav-cta { background: transparent; border: 1px solid #C9A96E; color: #C9A96E; padding: 0.5rem 1.4rem; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.3s; font-family: 'DM Sans', sans-serif; }
+  .nav-cta:hover { background: #C9A96E; color: #0D0D0D; }
+
+  /* HERO */
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 4rem 4rem; position: relative; overflow: hidden; background: #0D0D0D; }
+  .hero-accent { position: absolute; top: 28%; right: 6%; width: 320px; height: 320px; border: 1px solid rgba(201,169,110,0.12); border-radius: 50%; }
+  .hero-accent::after { content: ''; position: absolute; top: 24px; left: 24px; right: 24px; bottom: 24px; border: 1px solid rgba(201,169,110,0.07); border-radius: 50%; }
+  .hero-badge { position: absolute; top: 50%; right: 8%; transform: translateY(-50%); width: 160px; height: 160px; border-radius: 50%; background: rgba(201,169,110,0.07); border: 1px solid rgba(201,169,110,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .hero-badge-text { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: #C9A96E; line-height: 1.8; }
+  .hero-badge-icon { font-size: 1.6rem; margin-bottom: 0.4rem; opacity: 0.6; }
+  .hero-content { position: relative; z-index: 1; max-width: 660px; }
+  .hero-eyebrow { font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase; color: #C9A96E; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
+  .hero-eyebrow::before { content: ''; width: 40px; height: 1px; background: #C9A96E; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.8rem, 5.5vw, 5rem); line-height: 1.08; font-weight: 400; margin-bottom: 1.5rem; color: #F0EDE6; }
+  h1 em { font-style: italic; color: #C9A96E; }
+  .hero-desc { font-size: 1rem; line-height: 1.85; color: rgba(240,237,230,0.78); max-width: 500px; margin-bottom: 2rem; font-weight: 300; background: rgba(201,169,110,0.06); padding: 1rem 1.2rem; border-left: 2px solid rgba(201,169,110,0.5); }
+  .hero-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .hero-tag { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(201,169,110,0.3); color: rgba(201,169,110,0.85); padding: 0.3rem 0.8rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary { background: #C9A96E; color: #0D0D0D; padding: 0.9rem 2.2rem; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.3s; }
+  .btn-primary:hover { background: #B8934A; }
+  .btn-ghost { background: rgba(13,13,13,0.5); color: #F0EDE6; padding: 0.9rem 2.2rem; font-size: 0.85rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid rgba(240,237,230,0.3); cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.3s; }
+  .btn-ghost:hover { border-color: #F0EDE6; }
+
+  section { padding: 6rem 4rem; }
+  .section-label { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: #C9A96E; margin-bottom: 1rem; display: flex; align-items: center; gap: 1rem; }
+  .section-label::before { content: ''; width: 30px; height: 1px; background: #C9A96E; }
+  h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 400; line-height: 1.2; margin-bottom: 1rem; color: #F0EDE6; }
+  h2 em { font-style: italic; color: #C9A96E; }
+
+  /* ABOUT */
+  .about-section { background: #F5F2EC; color: #1A1612; }
+  .about { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+  .about-section h2 { color: #1A1612; }
+  .about-section h2 em { color: #9B6F2F; }
+  .about-section .section-label { color: #9B6F2F; }
+  .about-section .section-label::before { background: #9B6F2F; }
+  .about-box { background: #1A1612; border: 1px solid rgba(201,169,110,0.25); padding: 2.5rem; }
+  .about-stat { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: #C9A96E; line-height: 1; }
+  .about-stat-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,237,230,0.55); margin-top: 0.4rem; }
+  .about-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 2rem; }
+  .about-text p { color: #3D3328; line-height: 1.95; font-weight: 400; margin-bottom: 1.2rem; font-size: 0.95rem; }
+  .about-highlight { background: rgba(155,111,47,0.08); border-left: 3px solid #9B6F2F; padding: 1rem 1.2rem; margin: 1.5rem 0; font-size: 0.9rem; color: #5A3E1B; font-style: italic; line-height: 1.8; }
+  .about-values { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.5rem; }
+  .value-tag { font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; border: 1px solid #9B6F2F; color: #7A5220; padding: 0.35rem 0.9rem; background: rgba(155,111,47,0.07); }
+
+  /* SERVICES */
+  .services { background: #111; }
+  .services-header { text-align: center; margin-bottom: 3rem; }
+  .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: rgba(240,237,230,0.07); }
+  .service-card { background: #111; padding: 2.5rem 2rem; transition: background 0.3s; position: relative; overflow: hidden; }
+  .service-card:hover { background: #1A1612; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, rgba(201,169,110,0.4), transparent); transform: scaleX(0); transition: transform 0.4s; }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-num { font-family: 'Playfair Display', serif; font-size: 2rem; color: rgba(201,169,110,0.2); line-height: 1; margin-bottom: 1rem; }
+  .service-title { font-size: 1rem; font-weight: 500; margin-bottom: 0.6rem; color: #F0EDE6; }
+  .service-desc { font-size: 0.85rem; color: rgba(240,237,230,0.55); line-height: 1.85; }
+  .service-tag { display: inline-block; margin-top: 1rem; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #C9A96E; border: 1px solid rgba(201,169,110,0.25); padding: 0.2rem 0.6rem; }
+
+  /* PORTFOLIO */
+  .portfolio-section { background: #F5F2EC; }
+  .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem; }
+  .portfolio-section h2 { color: #1A1612; }
+  .portfolio-section h2 em { color: #9B6F2F; }
+  .portfolio-section .section-label { color: #9B6F2F; }
+  .portfolio-section .section-label::before { background: #9B6F2F; }
+  .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(26,22,18,0.12); }
+  .port-item { aspect-ratio: 4/3; display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem; position: relative; overflow: hidden; cursor: default; }
+  .port-item:nth-child(1) { background: #18100A; }
+  .port-item:nth-child(2) { background: #0A0F18; }
+  .port-item:nth-child(3) { background: #150818; }
+  .port-item:nth-child(4) { background: #081510; }
+  .port-item:nth-child(5) { background: #18100A; }
+  .port-item:nth-child(6) { background: #0D1218; }
+  .port-item::before { content: ''; position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.88), transparent 55%); }
+  .port-label { position: relative; z-index: 1; font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: #C9A96E; margin-bottom: 0.3rem; }
+  .port-title { position: relative; z-index: 1; font-family: 'Playfair Display', serif; font-size: 0.95rem; color: #F0EDE6; }
+  .port-icon { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-60%); font-size: 2.5rem; opacity: 0.1; color: #C9A96E; }
+  .btn-ghost-dark { background: transparent; color: #3D3328; border: 1px solid #9B6F2F; padding: 0.7rem 1.6rem; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.3s; }
+  .btn-ghost-dark:hover { background: rgba(155,111,47,0.1); }
+
+  /* TESTIMONIALS */
+  .testimonials { background: #0D0D0D; text-align: center; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 3rem; text-align: left; }
+  .testi-card { background: #1A1612; border: 1px solid rgba(201,169,110,0.12); padding: 2rem; }
+  .testi-quote { font-family: 'Playfair Display', serif; font-size: 0.93rem; line-height: 1.9; color: rgba(240,237,230,0.8); margin-bottom: 1.5rem; font-style: italic; }
+  .testi-author { display: flex; align-items: center; gap: 0.75rem; }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 50%; background: rgba(201,169,110,0.12); border: 1px solid rgba(201,169,110,0.35); display: flex; align-items: center; justify-content: center; font-size: 0.72rem; color: #C9A96E; font-weight: 500; flex-shrink: 0; }
+  .testi-name { font-size: 0.88rem; font-weight: 500; color: #F0EDE6; }
+  .testi-role { font-size: 0.72rem; color: rgba(240,237,230,0.4); letter-spacing: 0.04em; }
+  .stars { color: #C9A96E; font-size: 0.72rem; margin-bottom: 0.75rem; letter-spacing: 0.18em; }
+
+  /* CONTACT */
+  .contact-section { background: #F5F2EC; }
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
+  .contact-section h2 { color: #1A1612; }
+  .contact-section h2 em { color: #9B6F2F; }
+  .contact-section .section-label { color: #9B6F2F; }
+  .contact-section .section-label::before { background: #9B6F2F; }
+  .contact-desc { color: #4A3D2E; line-height: 1.9; font-size: 0.95rem; font-weight: 400; margin: 1.2rem 0 2rem; }
+  .online-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(0,160,80,0.1); border: 1px solid rgba(0,160,80,0.25); padding: 0.4rem 1rem; margin-bottom: 1.5rem; }
+  .online-dot { width: 7px; height: 7px; border-radius: 50%; background: #00A050; }
+  .online-text { font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; color: #007A3D; font-weight: 500; }
+  .contact-form { display: flex; flex-direction: column; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+  .form-group label { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: #6B5A45; }
+  .form-group input, .form-group textarea, .form-group select { background: #fff; border: 1px solid rgba(26,22,18,0.18); color: #1A1612; padding: 0.8rem 1rem; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s; }
+  .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: #9B6F2F; }
+  .form-group textarea { min-height: 110px; resize: vertical; }
+  .form-group select { appearance: none; cursor: pointer; }
+  .contact-item { display: flex; gap: 1rem; margin-bottom: 1.1rem; align-items: flex-start; }
+  .contact-dot-icon { width: 6px; height: 6px; border-radius: 50%; background: #9B6F2F; margin-top: 7px; flex-shrink: 0; }
+  .contact-item-label { font-size: 0.68rem; letter-spacing: 0.15em; text-transform: uppercase; color: #9B6F2F; margin-bottom: 0.2rem; }
+  .contact-item-val { font-size: 0.92rem; color: #3D3328; }
+  .btn-dark { background: #1A1612; color: #F0EDE6; padding: 0.9rem 2rem; font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; border: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-weight: 500; transition: all 0.3s; margin-top: 0.5rem; }
+  .btn-dark:hover { background: #9B6F2F; }
+
+/* WhatsApp Float Button */
+.wa-float { position: fixed; bottom: 2rem; right: 2rem; z-index: 999; display: flex; align-items: center; gap: 0.75rem; cursor: pointer; }
+.wa-bubble { background: #25D366; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37,211,102,0.4); transition: transform 0.3s; }
+.wa-bubble:hover { transform: scale(1.1); }
+.wa-bubble svg { width: 28px; height: 28px; fill: #fff; }
+.wa-label { background: #fff; color: #1A1612; font-size: 0.78rem; font-weight: 500; padding: 0.5rem 1rem; border-radius: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.15); white-space: nowrap; opacity: 0; transform: translateX(10px); transition: all 0.3s; }
+.wa-float:hover .wa-label { opacity: 1; transform: translateX(0); }
+.pricing-section { background: #111; }
+.pricing-top { text-align: center; margin-bottom: 2.5rem; }
+.pricing-tabs { display: flex; justify-content: center; margin-bottom: 2.5rem; border: 1px solid rgba(201,169,110,0.25); width: fit-content; margin-left: auto; margin-right: auto; }
+.ptab { padding: 0.6rem 1.8rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; color: rgba(240,237,230,0.5); background: transparent; border: none; font-family: 'DM Sans', sans-serif; transition: all 0.25s; }
+.ptab.active { background: #C9A96E; color: #0D0D0D; font-weight: 500; }
+.pricing-cards { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1px; background: rgba(240,237,230,0.08); }
+.pcard { background: #1A1612; padding: 2rem 1.75rem; }
+.pcard.featured { background: #211C14; outline: 2px solid #C9A96E; outline-offset: -1px; }
+.badge-popular { display: inline-block; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; background: #C9A96E; color: #0D0D0D; padding: 0.25rem 0.75rem; margin-bottom: 1.2rem; font-weight: 500; }
+.badge-spacer { display: block; height: 1.7rem; margin-bottom: 1.2rem; }
+.pcard-name { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(201,169,110,0.7); margin-bottom: 0.5rem; }
+.pcard-price { font-family: 'Playfair Display', serif; font-size: 2.2rem; color: #F0EDE6; line-height: 1; margin-bottom: 0.3rem; }
+.pcard-period { font-size: 0.75rem; color: rgba(240,237,230,0.4); margin-bottom: 1.5rem; }
+.pcard-divider { height: 1px; background: rgba(240,237,230,0.08); margin-bottom: 1.5rem; }
+.pcard-items { list-style: none; padding: 0; margin: 0 0 2rem; display: flex; flex-direction: column; gap: 0.75rem; }
+.pcard-items li { font-size: 0.85rem; color: rgba(240,237,230,0.7); display: flex; align-items: flex-start; gap: 0.6rem; line-height: 1.5; }
+.pcheck { color: #C9A96E; font-size: 0.75rem; margin-top: 2px; flex-shrink: 0; }
+.pcard-btn { display: block; text-align: center; text-decoration: none; padding: 0.8rem; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.25s; border: 1px solid rgba(201,169,110,0.4); color: #C9A96E; }
+.pcard-btn:hover { background: rgba(201,169,110,0.1); }
+.pcard.featured .pcard-btn { background: #C9A96E; color: #0D0D0D; border-color: #C9A96E; font-weight: 500; }
+.pcard.featured .pcard-btn:hover { background: #B8934A; }
+.satuan-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); gap: 1px; background: rgba(240,237,230,0.08); }
+.satuan-card { background: #1A1612; padding: 1.5rem; display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.satuan-name { font-size: 0.88rem; color: #F0EDE6; font-weight: 500; margin-bottom: 0.3rem; }
+.satuan-note { font-size: 0.72rem; color: rgba(240,237,230,0.4); }
+.satuan-price { font-family: 'Playfair Display', serif; font-size: 1.3rem; color: #C9A96E; white-space: nowrap; }
+.pricing-note { text-align: center; margin-top: 2rem; font-size: 0.78rem; color: rgba(240,237,230,0.35); }
+
+  footer { background: #080808; border-top: 1px solid rgba(240,237,230,0.06); padding: 2rem 4rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+  footer p { font-size: 0.75rem; color: rgba(240,237,230,0.3); }
+  .footer-logo { font-family: 'Playfair Display', serif; font-size: 0.95rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(240,237,230,0.5); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 3rem; }
+    .hero-badge { display: none; }
+    .about, .contact { grid-template-columns: 1fr; gap: 2.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; }
+    footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">Meta<span>fora</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">Tentang</a></li>
+    <li><a href="#services">Layanan</a></li>
+    <li><a href="#portfolio">Portofolio</a></li>
+    <li><a href="#contact">Kontak</a></li>
+    <li><a href="#harga">Harga</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Mulai Konsultasi</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-accent"></div>
+  <div class="hero-badge">
+    <div class="hero-badge-icon">✦</div>
+    <div class="hero-badge-text">Konsultasi<br>100%<br>Online</div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Event Creative Consultant · Online</div>
+    <h1>Wujudkan Event<br>Anda dengan<br><em>Visual Terbaik</em></h1>
+    <p class="hero-desc">METAFORA Creative Studio adalah studio konsultasi online untuk ide event, dokumentasi, dan desain visual yang membuat setiap event Anda tampil profesional dan berkesan.</p>
+    <div class="hero-tags">
+      <span class="hero-tag">Konsultasi Ide Event</span>
+      <span class="hero-tag">Desain Spanduk</span>
+      <span class="hero-tag">Logo Event</span>
+      <span class="hero-tag">Layout & Visual</span>
+      <span class="hero-tag">Dokumentasi</span>
+    </div>
+    <div class="hero-btns">
+      <button class="btn-primary" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Lihat Layanan</button>
+      <button class="btn-ghost" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Mulai Konsultasi →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about-section" id="about">
+  <div class="about">
+    <div>
+      <div class="about-box">
+        <div>
+          <div class="about-stat">4+</div>
+          <div class="about-stat-label">Tahun Pengalaman</div>
+        </div>
+        <div class="about-stats">
+          <div>
+            <div class="about-stat" style="font-size:2.2rem">80+</div>
+            <div class="about-stat-label">Event Dikerjakan</div>
+          </div>
+          <div>
+            <div class="about-stat" style="font-size:2.2rem">100%</div>
+            <div class="about-stat-label">Layanan Online</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-text">
+      <div class="section-label">Tentang Kami</div>
+      <h2>Studio Kreatif<br>untuk <em>Setiap Event</em></h2>
+      <p>METAFORA Creative Studio adalah layanan konsultasi kreatif berbasis online yang berspesialisasi dalam dunia event. Dari tahap perencanaan ide hingga seluruh kebutuhan visual event Anda, kami hadir sebagai mitra kreatif terpercaya.</p>
+      <div class="about-highlight">
+        "Yang paling menonjol dari kami adalah kemampuan desain visual event — mulai dari spanduk, logo event, layout panggung, hingga seluruh kebutuhan visualisasi yang membuat event Anda tampil beda."
+      </div>
+      <p>Semua layanan kami tersedia secara online, sehingga Anda bisa berkonsultasi dari mana saja, kapan saja, tanpa perlu tatap muka langsung.</p>
+      <div class="about-values">
+        <span class="value-tag">Online & Fleksibel</span>
+        <span class="value-tag">Kreatif</span>
+        <span class="value-tag">Profesional</span>
+        <span class="value-tag">Tepat Waktu</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="services-header">
+    <div class="section-label" style="justify-content:center">Yang Kami Tawarkan</div>
+    <h2>Layanan <em>Unggulan</em></h2>
+    <p style="color:rgba(240,237,230,0.5);font-size:0.9rem;margin-top:0.5rem;font-weight:300">Semua layanan tersedia secara online — cepat, mudah, dan profesional</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <div class="service-title">Konsultasi Ide Event</div>
+      <div class="service-desc">Diskusi mendalam untuk merumuskan konsep, tema, alur acara, dan strategi kreatif event Anda — dari seminar, wedding, hingga festival.</div>
+      <span class="service-tag">Konsultasi Online</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <div class="service-title">Desain Spanduk & Banner</div>
+      <div class="service-desc">Desain spanduk, banner, backdrop panggung, roll-up banner, dan semua media cetak event yang menarik perhatian dan sesuai branding acara.</div>
+      <span class="service-tag">Andalan Kami</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <div class="service-title">Logo & Identitas Event</div>
+      <div class="service-desc">Pembuatan logo khusus event, tema warna, tipografi, dan panduan visual agar seluruh elemen event tampil konsisten dan berkarakter.</div>
+      <span class="service-tag">Andalan Kami</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <div class="service-title">Layout & Visualisasi</div>
+      <div class="service-desc">Desain layout rundown, undangan digital, tiket, booklet acara, merchandise, hingga visualisasi dekorasi dan tata letak panggung event.</div>
+      <span class="service-tag">Andalan Kami</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">05</div>
+      <div class="service-title">Dokumentasi Event</div>
+      <div class="service-desc">Konsultasi kebutuhan dokumentasi event — perencanaan foto & video, angle terbaik, hingga brief untuk tim dokumentasi Anda.</div>
+      <span class="service-tag">Konsultasi Online</span>
+    </div>
+    <div class="service-card">
+      <div class="service-num">06</div>
+      <div class="service-title">Paket Visual Lengkap</div>
+      <div class="service-desc">Paket all-in-one untuk satu event: logo, spanduk, layout, media sosial, undangan digital, dan semua kebutuhan visual dalam satu paket terpadu.</div>
+      <span class="service-tag">Paket Hemat</span>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-label">Karya Kami</div>
+      <h2>Portofolio <em>Event</em></h2>
+    </div>
+    <button class="btn-ghost-dark">Lihat Semua →</button>
+  </div>
+  <div class="portfolio-grid">
+  <div class="port-item" style="background-image: url('foto/project1.png'); background-size: cover; background-position: center;">
+  <div class="port-label">Desain Tema Event</div>
+  <div class="port-title">SPEKTA 2.0</div>
+</div>
+    <div class="port-item">
+      <div class="port-icon">◎</div>
+      <div class="port-label">Spanduk & Backdrop</div>
+      <div class="port-title">Seminar Nasional UMKM</div>
+    </div>
+    <div class="port-item">
+      <div class="port-icon">◇</div>
+      <div class="port-label">Layout & Visualisasi</div>
+      <div class="port-title">Gala Dinner Perusahaan</div>
+    </div>
+    <div class="port-item">
+      <div class="port-icon">◉</div>
+      <div class="port-label">Paket Visual Lengkap</div>
+      <div class="port-title">Wedding Outdoor Pekanbaru</div>
+    </div>
+    <div class="port-item">
+      <div class="port-icon">◈</div>
+      <div class="port-label">Konsultasi & Desain</div>
+      <div class="port-title">Pameran Seni Budaya Riau</div>
+    </div>
+    <div class="port-item">
+      <div class="port-icon">◎</div>
+      <div class="port-label">Identitas & Layout</div>
+      <div class="port-title">Music Festival Campus</div>
+    </div>
+  </div>
+</section>
+<!-- PRICING -->
+<section class="pricing-section" id="harga">
+  <div class="pricing-top">
+    <div class="section-label" style="justify-content:center">Investasi untuk Event Anda</div>
+    <h2>Paket & <em>Harga</em></h2>
+    <p style="color:rgba(240,237,230,0.5);font-size:0.9rem;margin-top:0.5rem;font-weight:300">Transparan, terjangkau, dan sesuai kebutuhan event Anda</p>
+  </div>
+  <div class="pricing-tabs">
+    <button class="ptab active" onclick="showTab('paket',this)">Paket Bundling</button>
+    <button class="ptab" onclick="showTab('satuan',this)">Per Layanan</button>
+  </div>
+  <div id="tab-paket">
+    <div class="pricing-cards">
+      <div class="pcard">
+        <span class="badge-spacer"></span>
+        <div class="pcard-name">Paket Starter</div>
+        <div class="pcard-price">Rp 199.000</div>
+        <div class="pcard-period">per event</div>
+        <div class="pcard-divider"></div>
+        <ul class="pcard-items">
+          <li><span class="pcheck">✦</span>Konsultasi ide event (60 menit)</li>
+          <li><span class="pcheck">✦</span>1 desain spanduk / banner</li>
+          <li><span class="pcheck">✦</span>1 desain layout (undangan / rundown)</li>
+          <li><span class="pcheck">✦</span>2x revisi per item</li>
+          <li><span class="pcheck">✦</span>File siap cetak (PDF/PNG)</li>
+        </ul>
+        <a class="pcard-btn" href="https://wa.me/6282388230016?text=Halo%20METAFORA%2C%20saya%20tertarik%20Paket%20Starter" target="_blank">Pilih Paket →</a>
+      </div>
+      <div class="pcard featured">
+        <span class="badge-popular">Paling Populer</span>
+        <div class="pcard-name">Paket Standar</div>
+        <div class="pcard-price">Rp 350.000</div>
+        <div class="pcard-period">per event</div>
+        <div class="pcard-divider"></div>
+        <ul class="pcard-items">
+          <li><span class="pcheck">✦</span>Konsultasi ide event (60 menit)</li>
+          <li><span class="pcheck">✦</span>Logo khusus event</li>
+          <li><span class="pcheck">✦</span>2 desain spanduk / banner</li>
+          <li><span class="pcheck">✦</span>2 desain layout</li>
+          <li><span class="pcheck">✦</span>3x revisi per item</li>
+          <li><span class="pcheck">✦</span>File siap cetak (PDF/PNG)</li>
+        </ul>
+        <a class="pcard-btn" href="https://wa.me/6282388230016?text=Halo%20METAFORA%2C%20saya%20tertarik%20Paket%20Standar" target="_blank">Pilih Paket →</a>
+      </div>
+      <div class="pcard">
+        <span class="badge-spacer"></span>
+        <div class="pcard-name">Paket Premium</div>
+        <div class="pcard-price">Rp 599.000</div>
+        <div class="pcard-period">per event</div>
+        <div class="pcard-divider"></div>
+        <ul class="pcard-items">
+          <li><span class="pcheck">✦</span>Konsultasi ide event (unlimited)</li>
+          <li><span class="pcheck">✦</span>Logo + panduan visual lengkap</li>
+          <li><span class="pcheck">✦</span>Semua kebutuhan spanduk & banner</li>
+          <li><span class="pcheck">✦</span>Semua kebutuhan layout & visualisasi</li>
+          <li><span class="pcheck">✦</span>Konsultasi dokumentasi event</li>
+          <li><span class="pcheck">✦</span>Revisi minor unlimited</li>
+        </ul>
+        <a class="pcard-btn" href="https://wa.me/6282388230016?text=Halo%20METAFORA%2C%20saya%20tertarik%20Paket%20Premium" target="_blank">Pilih Paket →</a>
+      </div>
+    </div>
+  </div>
+  <div id="tab-satuan" style="display:none">
+    <div class="satuan-grid">
+      <div class="satuan-card"><div><div class="satuan-name">Konsultasi Ide Event</div><div class="satuan-note">60 menit via WA / Zoom</div></div><div class="satuan-price">Rp 75.000</div></div>
+      <div class="satuan-card"><div><div class="satuan-name">Desain Spanduk / Banner</div><div class="satuan-note">Termasuk 2x revisi</div></div><div class="satuan-price">Rp 85.000</div></div>
+      <div class="satuan-card"><div><div class="satuan-name">Logo Event</div><div class="satuan-note">Termasuk 3x revisi</div></div><div class="satuan-price">Rp 150.000</div></div>
+      <div class="satuan-card"><div><div class="satuan-name">Layout & Visualisasi</div><div class="satuan-note">Per item, 2x revisi</div></div><div class="satuan-price">Rp 65.000</div></div>
+      <div class="satuan-card"><div><div class="satuan-name">Dokumentasi Event</div><div class="satuan-note">Konsultasi online</div></div><div class="satuan-price">Rp 75.000</div></div>
+    </div>
+  </div>
+  <p class="pricing-note">Harga belum termasuk biaya cetak · Pembayaran via transfer bank / QRIS · Konsultasi pertama gratis</p>
+</section>
+<script>
+function showTab(tab,el){
+  document.getElementById('tab-paket').style.display=tab==='paket'?'block':'none';
+  document.getElementById('tab-satuan').style.display=tab==='satuan'?'block':'none';
+  document.querySelectorAll('.ptab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+</script>
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="testimonials">
+  <div class="section-label" style="justify-content:center">Apa Kata Klien Kami</div>
+  <h2>Kepercayaan yang <em>Berbicara</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="testi-quote">"Konsultasi onlinenya sangat mudah dan responsif. Desain spanduk dan logo event kami jadi jauh lebih profesional. Banyak tamu yang memuji tampilan visual acara kami!"</p>
+      <div class="testi-author">
+        <div class="testi-avatar">AR</div>
+        <div>
+          <div class="testi-name">Ahmad Rasyid</div>
+          <div class="testi-role">Panitia Riau Youth Festival</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="testi-quote">"METAFORA bantu kami dari nol — dari konsep acara hingga semua desain visual. Prosesnya cepat, hasilnya memuaskan, dan komunikasinya sangat enak via online."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">SW</div>
+        <div>
+          <div class="testi-name">Siti Wahyuni</div>
+          <div class="testi-role">Penyelenggara Seminar UMKM</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card">
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <p class="testi-quote">"Kami pesan paket lengkap untuk wedding dan hasilnya luar biasa. Semua desain dari undangan, spanduk, sampai layout dekorasi tampil serasi dan elegan."</p>
+      <div class="testi-author">
+        <div class="testi-avatar">DP</div>
+        <div>
+          <div class="testi-name">Doni & Putri</div>
+          <div class="testi-role">Klien Wedding Outdoor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact-section" id="contact">
+  <div class="contact">
+    <div>
+      <div class="section-label">Hubungi Kami</div>
+      <h2>Konsultasikan<br><em>Eventmu</em> Sekarang</h2>
+      <div class="online-badge">
+        <div class="online-dot"></div>
+        <span class="online-text">Layanan 100% Online</span>
+      </div>
+      <p class="contact-desc">Ceritakan event Anda kepada kami. Sesi konsultasi pertama gratis — kami bantu rumuskan ide, konsep, dan seluruh kebutuhan visual event Anda.</p>
+      <div class="contact-item">
+        <div class="contact-dot-icon"></div>
+        <div>
+          <div class="contact-item-label">WhatsApp</div>
+          <div class="contact-item-val">+62 823-8823-0016</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-dot-icon"></div>
+        <div>
+          <div class="contact-item-label">Email</div>
+          <div class="contact-item-val">Hallometafora&#64;gmail&#46;com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-dot-icon"></div>
+        <div>
+          <div class="contact-item-label">Instagram</div>
+          <div class="contact-item-val">@metafora.Creative</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-dot-icon"></div>
+        <div>
+          <div class="contact-item-label">Jam Respon</div>
+          <div class="contact-item-val">Senin – Jum'at, 08.00 – 16.00 WIB</div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="contact-form">
+        <form action="https://formspree.io/f/mvzvwqgy" method="POST">
+          <input type="hidden" name="_subject" value="Konsultasi Baru - METAFORA Creative Studio">
+        <div class="form-group">
+          <label>Nama Lengkap</label>
+          <input type="text" name="nama" placeholder="Nama Anda" required>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="_replyto" placeholder="Email aktif" required>
+        </div>
+        <div class="form-group">
+          <label>Jenis Event</label>
+          <input type="text" name="jenis_event" placeholder="cth: seminar, wedding, festival, ulang tahun...">
+        </div>
+        <div class="form-group">
+          <label>Layanan yang Dibutuhkan</label>
+          <select name="layanan">
+            <option value="">— Pilih layanan —</option>
+            <option>Konsultasi Ide Event</option>
+            <option>Desain Spanduk & Banner</option>
+            <option>Logo & Identitas Event</option>
+            <option>Layout & Visualisasi</option>
+            <option>Dokumentasi Event</option>
+            <option>Paket Visual Lengkap</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Ceritakan Event Anda</label>
+          <textarea name="message" placeholder="Deskripsikan event Anda — tema, tanggal, kebutuhan visual, dan hal lain yang ingin dikonsultasikan..." required></textarea>
+        </div>
+        <button type="submit" class="btn-dark">Kirim & Mulai Konsultasi →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">Metafora Creative Studio</div>
+    <p>© 2025 METAFORA Creative Studio · Konsultasi Event & Desain Visual Online</p>
+  <p>Indonesia</p>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a class="wa-float" href="https://wa.me/6282388230016?text=Halo%20METAFORA%2C%20saya%20ingin%20konsultasi%20event" target="_blank">
+  <div class="wa-label">Chat Konsultasi</div>
+  <div class="wa-bubble">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  </div>
+</a>
+
+</body>
+</html>
